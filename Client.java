@@ -17,7 +17,7 @@ public class Client {
 	private static final byte PUT_CODE = 100;
 	private static final byte GET_CODE = 50;
 
-	// Write methods here
+	
 	public String fillString(String string, int limit, char character) {
 		if (string.length() >= limit) {
 			return string;
@@ -38,7 +38,7 @@ public class Client {
 		
 		byte[] buffer = new byte[101];
 		ByteBuffer bb = ByteBuffer.wrap(buffer);
-		bb.order(ByteOrder.LITTLE_ENDIAN);
+//		bb.order(ByteOrder.LITTLE_ENDIAN);
 		bb.put(PUT_CODE);
 		bb.put(title.getBytes());
 		bb.position(bb.position() + (20 - title.length()));
@@ -74,7 +74,7 @@ public class Client {
 
 			buffer = new byte[10];
 			bb = ByteBuffer.wrap(buffer);
-			bb.order(ByteOrder.LITTLE_ENDIAN);
+//			bb.order(ByteOrder.LITTLE_ENDIAN);
 
 			bb.clear();
 			bb.put(String.valueOf(fdin.length()).getBytes());
@@ -99,7 +99,7 @@ public class Client {
 		}
 
 		bb = ByteBuffer.wrap(buffer);
-		bb.order(ByteOrder.LITTLE_ENDIAN);
+//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		bb.put(buffer);
@@ -116,7 +116,7 @@ public class Client {
 		buffer = new byte[1];
 
 		bb = ByteBuffer.wrap(buffer);
-		bb.order(ByteOrder.LITTLE_ENDIAN);
+//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		try {
@@ -143,7 +143,7 @@ public class Client {
 		
 		byte[] buffer = new byte[31];
 		ByteBuffer bb = ByteBuffer.wrap(buffer);
-		bb.order(ByteOrder.LITTLE_ENDIAN);
+//		bb.order(ByteOrder.LITTLE_ENDIAN);
 		bb.put(GET_CODE);
 		bb.put(dst.getBytes());
 
@@ -161,11 +161,11 @@ public class Client {
 		buffer = new byte[10];
 
 		bb = ByteBuffer.wrap(buffer);
-		bb.order(ByteOrder.LITTLE_ENDIAN);
+//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		try {
-			_in.read(buffer);
+			_in.readFully(buffer); 
 		} catch (IOException e) {
 			System.out.println("c> Could not receive file size");
 			e.printStackTrace();
@@ -181,11 +181,11 @@ public class Client {
 		buffer = new byte[Integer.parseInt(filesize.replaceAll("[^0-9]",""))];
 
 		bb = ByteBuffer.wrap(buffer);
-		bb.order(ByteOrder.LITTLE_ENDIAN);
+//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		try {
-			_in.read(buffer);
+			_in.readFully(buffer);
 		} catch (IOException e) {
 			System.out.println("c> Could not receive file data");
 			e.printStackTrace();

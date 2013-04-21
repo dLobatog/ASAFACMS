@@ -49,7 +49,7 @@ The provided Makefile will compile the server and both clients.
 $> make  <-- compiles the source
 $> ./server -p <port> <-- opens the server at port <port>
 $> ./client -s <hostname> -p <port> <-- connects the C client to the server
-$> java -cp . client -h <hostname> -p <port>  <-- connects the Java client to the server 
+$> java -cp . Client -h <hostname> -p <port>  <-- connects the Java client to the server 
 ```
 
 ### License
