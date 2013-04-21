@@ -38,7 +38,6 @@ public class Client {
 		
 		byte[] buffer = new byte[101];
 		ByteBuffer bb = ByteBuffer.wrap(buffer);
-//		bb.order(ByteOrder.LITTLE_ENDIAN);
 		bb.put(PUT_CODE);
 		bb.put(title.getBytes());
 		bb.position(bb.position() + (20 - title.length()));
@@ -74,7 +73,6 @@ public class Client {
 
 			buffer = new byte[10];
 			bb = ByteBuffer.wrap(buffer);
-//			bb.order(ByteOrder.LITTLE_ENDIAN);
 
 			bb.clear();
 			bb.put(String.valueOf(fdin.length()).getBytes());
@@ -99,7 +97,6 @@ public class Client {
 		}
 
 		bb = ByteBuffer.wrap(buffer);
-//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		bb.put(buffer);
@@ -116,7 +113,6 @@ public class Client {
 		buffer = new byte[1];
 
 		bb = ByteBuffer.wrap(buffer);
-//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		try {
@@ -143,7 +139,6 @@ public class Client {
 		
 		byte[] buffer = new byte[31];
 		ByteBuffer bb = ByteBuffer.wrap(buffer);
-//		bb.order(ByteOrder.LITTLE_ENDIAN);
 		bb.put(GET_CODE);
 		bb.put(dst.getBytes());
 
@@ -161,7 +156,6 @@ public class Client {
 		buffer = new byte[10];
 
 		bb = ByteBuffer.wrap(buffer);
-//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		try {
@@ -181,7 +175,6 @@ public class Client {
 		buffer = new byte[Integer.parseInt(filesize.replaceAll("[^0-9]",""))];
 
 		bb = ByteBuffer.wrap(buffer);
-//		bb.order(ByteOrder.LITTLE_ENDIAN);
 
 		bb.clear();
 		try {
